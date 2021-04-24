@@ -1,0 +1,30 @@
+{
+  "name": "pest",
+  "version": "1.0.0",
+  "description": "not thing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superbogy/pest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superbogy/pest/issues"
+  },
+  "homepage": "https://github.com/superbogy/pest#readme",
+  "dependencies": {
+    "@types/node": "^14.14.22",
+    "@types/ramda": "^0.27.38",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "eslint": "^7.20.0",
+    "kuuid": "^0.6.0",
+    "md5-file": "^5.0.0",
+    "ramda": "^0.27.1",
+    "search-index": "^2.2.0"
+  }
+}
