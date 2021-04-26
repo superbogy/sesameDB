@@ -23,23 +23,32 @@ export default class BLeaf {
       return this;
     }
     const midIndex = Math.floor(this.keys.length / 2);
-    const keys = this.keys.splice(0, midIndex);
-    const data = this.data.splice(0, midIndex);
+    const keys = this.keys.slice(midIndex);
+    const data = this.data.slice(midIndex);
+    this.keys = this.keys.slice(0, midIndex);
+    this.data = this.data.slice(0, midIndex);
+
     if (!this.parent) {
       // new root node
-      this.parent = new BNode([], [], null);
+      this.parent = new BNode([], [this], null, this.order);
     }
     const newNode = new BLeaf(keys, this.parent, data, this.order);
-    this.parent.insert(this);
-    this.parent.insert(newNode);
-    return newNode;
+    // this.parent.insert(this);
+    return this.parent.insert(newNode);
   }
   getIndex(key: any) {
-    const index = this.keys.find(k => k < key);
-    if (key !== -1) {
+    if (!this.keys.length) {
+      return {index: 0, node: this};
+    }
+    const index = R.findIndex((k) => k > key, this.keys);
+    if (index !== -1) {
       return {index, node: this};
     }
     return {index: this.keys.length, node: this};
+  }
+
+  getNode() {
+    return this;
   }
 
   getId(key: any) {
