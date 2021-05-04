@@ -1,10 +1,28 @@
-interface Node {
-  keys: string[];
-  parent: Node | null;
-  isLeaf: boolean;
-  children: Node[];
+import {BLeaf} from "./Node";
+
+export type Dict = {
+  [key: string]: any
 }
 
-interface Leaf extends Node {
-  data: [string];
+export enum Operator {
+  $eq = '=',
+  $lt = '<',
+  $gt = '>',
+  $lte = '<=',
+  $gte = '>=',
+  $like = 'LIKE'
+}
+export interface Filter {
+  key: string | Dict;
+  op?: string;
+  lo?: Filter;
+  limit?: number;
+  skip?: number;
+}
+
+export interface Cursor {
+  previous: Cursor | null;
+  data: any[];
+  index: number;
+  current: BLeaf;
 }
